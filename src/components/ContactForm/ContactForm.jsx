@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from '../../redux/contacts/operations';
 
 import PropTypes from 'prop-types';
 
@@ -12,7 +12,7 @@ export default function ContactForm() {
     dispatch(
       addContact({
         name: form.elements.name.value,
-        phone: form.elements.number.value,
+        number: form.elements.number.value,
       })
     );
     form.reset();
@@ -26,6 +26,7 @@ export default function ContactForm() {
           className="formField__input"
           type="text"
           name="name"
+          placeholder="Enter name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
@@ -37,6 +38,7 @@ export default function ContactForm() {
           className="formField__input"
           type="tel"
           name="number"
+          placeholder="111-11-11"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

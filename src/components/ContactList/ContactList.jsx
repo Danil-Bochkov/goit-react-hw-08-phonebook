@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Notification from './Notification';
-import { Contact } from './Contact';
+import Notification from '../Notification/Notification';
+import { Contact } from '../Contact/Contact';
 
 const ContactList = ({ contacts }) => {
   return (
@@ -10,9 +10,9 @@ const ContactList = ({ contacts }) => {
         <Notification message="You don't have any contact 😓" />
       ) : (
         <ul className="contactsList">
-          {contacts.map(({ id, name, phone }) => (
+          {contacts.map(({ id, name, number }) => (
             <li key={id}>
-              <Contact id={id} name={name} phone={phone} />
+              <Contact id={id} name={name} number={number} />
             </li>
           ))}
         </ul>

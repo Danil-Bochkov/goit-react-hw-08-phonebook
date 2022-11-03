@@ -1,0 +1,76 @@
+.formField {
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(126, 147, 255, 0.2);
+    border-radius: 8px;
+    width: 440px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.16;
+    margin-top: 20px;
+    margin-bottom: 15px;
+
+    text-align: center;
+    letter-spacing: 0.01em;
+
+    color: #1f3349;
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: 0.16px;
+    
+    color: #A8A8A8;
+    margin-bottom: 21px;
+}
+
+.formInput {
+    margin-top: 8px;
+    padding: 11px 16px;
+    background: #F4F4F4;
+    border: 1px solid #C5C5C5;
+    border-radius: 6px;
+        outline: none;
+}
+
+.formInput:hover, 
+.formInput:focus {
+    border-color: #4CC6F5;
+}
+
+.formInput::placeholder {
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: 0.16px;
+    
+    color: #A8A8A8;
+}
+
+.formBtn {
+    height: 40px;
+    margin-top: 18px;
+    padding: 11px 10px;
+    color: #FFFFFF;
+    background: #4CC6F5;
+    box-shadow: 2px 2px 4px rgba(126, 147, 255, 0.2);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.formBtn:focus, 
+.formBtn:hover {
+    background: rgb(43, 151, 194);;
+}

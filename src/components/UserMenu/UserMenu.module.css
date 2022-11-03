@@ -1,0 +1,33 @@
+.headerField {
+    height: 64px;
+ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #1A1A1A;
+    background: #ffffff;
+    box-shadow: 0px 1px 4px rgba(126, 147, 255, 0.2);
+        border-radius: 8px;
+        padding: 0 20px;
+}
+
+.greating {
+    font-size: 14px;
+    line-height: 137%;
+}
+
+.mailField {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+}
+
+.mail {
+}

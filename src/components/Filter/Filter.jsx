@@ -10,6 +10,7 @@ const Filter = ({ handleChange, filter }) => {
           className="filterField__input"
           type="text"
           name="filter"
+          placeholder="Enter name"
           value={filter}
           onChange={handleChange}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
