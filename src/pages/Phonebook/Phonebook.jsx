@@ -50,7 +50,7 @@ export const PhoneBook = () => {
       );
       return;
     }
-    dispatch(addContact.makeNewContact(newContact));
+    dispatch(addContact(newContact));
   };
 
   const handleChange = evt => {
