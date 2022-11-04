@@ -18,11 +18,6 @@ import Loader from './Loader/Loader';
 import UserNav from 'pages/UserNav/UserNav';
 import AuthNav from 'pages/AuthNav/AuthNav';
 
-// import Login from 'pages/Login/Login';
-// import UserInfo from 'pages/UserInfo/UserInfo';
-// import Register from 'pages/Register/Register';
-// import PhoneBook from 'pages/Phonebook/Phonebook';
-
 const Register = lazy(() => import('pages/Register/Register'));
 const Login = lazy(() => import('pages/Login/Login'));
 const PhoneBook = lazy(() => import('pages/Phonebook/Phonebook'));
@@ -78,25 +73,3 @@ export const App = () => {
     </div>
   );
 };
-
-// import { lazy } from 'react';
-// import { Route, Routes } from 'react-router-dom';
-// import { SharedLayout } from './SharedLayout';
-
-// import route from 'utils/route';
-
-// const Home = lazy(() => import('../pages/Home'));
-// const Movies = lazy(() => import('../pages/Movies'));
-// const MoviesDetails = lazy(() => import('../pages/MoviesDetails'));
-
-// export const App = () => {
-//   return (
-//     <Routes>
-//       <Route path={route.home} element={<SharedLayout />}>
-//         <Route index element={<Home />} />
-//         <Route path={route.movies} element={<Movies />} />
-//         <Route path={route.moviesId} element={<MoviesDetails />} />
-//       </Route>
-//     </Routes>
-//   );
-// };
