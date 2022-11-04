@@ -6,16 +6,18 @@ import {
   selectIsLoading,
   selectError,
 } from '../../redux/contacts/selectors';
-import { fetchContacts } from '../../redux/contacts/operations';
+import { addContact, fetchContacts } from '../../redux/contacts/operations';
 import { updateFilter } from '../../redux/contacts/filterSlice';
-
-import ContactForm from '../../components/ContactForm/ContactForm';
-import ContactList from '../../components/ContactList/ContactList';
-import Filter from '../../components/Filter/Filter';
+import ContactForm from 'components/Phonebook/ContactForm/ContactForm';
+import ContactList from 'components/Phonebook/ContactList/ContactList';
+import Filter from 'components/Phonebook/Filter/Filter';
 import Loader from '../../components/Loader/Loader';
-import UserMenu from '../../components/UserMenu/UserMenu';
+import UserMenu from '../../components/Navigation/UserMenu/UserMenu';
+
+import { toast } from 'react-toastify';
 
 import './style.scss';
+import capitalize from 'utils/capitalize';
 
 export const PhoneBook = () => {
   const dispatch = useDispatch();
@@ -28,6 +30,27 @@ export const PhoneBook = () => {
     return contacts?.filter(contact =>
       contact.name?.toLowerCase().includes(filter.toLowerCase())
     );
+  };
+
+  const doesAlreadyExist = newContact => {
+    for (const { name } of contacts) {
+      if (name === newContact.name) {
+        return name;
+      }
+    }
+    return false;
+  };
+
+  const addContactsForm = newContact => {
+    if (doesAlreadyExist(newContact)) {
+      toast.error(
+        `${capitalize(
+          newContact.name
+        )}'s contact already exists. Please, next time be more attentive to what you are trying to add`
+      );
+      return;
+    }
+    dispatch(addContact.makeNewContact(newContact));
   };
 
   const handleChange = evt => {
@@ -44,7 +67,7 @@ export const PhoneBook = () => {
       <div className="PhoneBook">
         <div className="container wrapperPhonebook">
           <h2 className="PhoneBook__title">Phonebook</h2>
-          <ContactForm />
+          <ContactForm addContact={addContactsForm} />
         </div>
 
         <div className="container wrapperContacts">

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Notification from '../Notification/Notification';
+import Notification from '../../Notification/Notification';
 import { Contact } from '../Contact/Contact';
 
 const ContactList = ({ contacts }) => {

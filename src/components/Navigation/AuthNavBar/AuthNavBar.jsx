@@ -1,5 +1,5 @@
 import style from './AuthNavBar.module.css';
-import LogoIcon from '../../images/logo.svg';
+import LogoIcon from '../../../images/logo.svg';
 
 export default function AuthNavBar({ children }) {
   return (

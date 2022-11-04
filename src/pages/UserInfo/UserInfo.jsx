@@ -1,12 +1,13 @@
-import UserMenu from 'components/UserMenu/UserMenu';
+import UserMenu from 'components/Navigation/UserMenu/UserMenu';
 
-import Profile from '../../components/Profile/Profile';
-import Statistics from '../../components/Statistics/Statistics';
-import TransactionHistory from '../../components/TransactionHistory/TransactionHistory';
+import Profile from '../../components/UserInfo/Profile/Profile';
+import Statistics from '../../components/UserInfo/Statistics/Statistics';
+import TransactionHistory from '../../components/UserInfo/TransactionHistory/TransactionHistory';
 
-import user from '../../components/Profile/user.json';
-import data from '../../components/Statistics/data.json';
-import transactions from '../../components/TransactionHistory/transactions.json';
+import user from '../../components/UserInfo/Profile/user.json';
+import data from '../../components/UserInfo/Statistics/data.json';
+import transactions from '../../components/UserInfo/TransactionHistory/transactions.json';
+
 import { useSelector } from 'react-redux';
 import { selectEmail, selectUsername } from 'redux/auth/auth-selectors';
 import { randomAvatar } from 'components/randomAvatar/randomAvatar';

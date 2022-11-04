@@ -5,10 +5,12 @@ import { Routes, Route } from 'react-router-dom';
 import { PhoneBook } from 'pages/Phonebook/Phonebook';
 import Register from '../pages/Register/Register';
 import Login from '../pages/Login/Login';
-import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './hook/PrivateRoute';
+import { RestrictedRoute } from './hook/RestrictedRoute';
 import UserInfo from 'pages/UserInfo/UserInfo';
 import route from 'utils/route';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { fetchContacts } from 'redux/contacts/operations';
 import UserNav from 'pages/UserNav/UserNav';
 import AuthNav from 'pages/AuthNav/AuthNav';
@@ -28,67 +30,33 @@ export const App = () => {
   }, [token, dispatch]);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <RestrictedRoute restricted>
-            <AuthNav />
-          </RestrictedRoute>
-        }
-      >
-        <Route path={route.logIn} element={<Login />} />
-        <Route path={route.register} element={<Register />} />
-      </Route>
-      {/* //! Залогинился */}
-      <Route
-        path="/"
-        element={
-          <PrivateRoute>
-            <UserNav />
-          </PrivateRoute>
-        }
-      >
-        <Route index element={<UserInfo />} end />
-        <Route path={route.contacts} element={<PhoneBook />} />
-      </Route>
-      {/* <Route path={route.userInfo} element={<Layout />}>
+    <>
+      <Routes>
         <Route
-          path={route.register}
+          path="/"
           element={
             <RestrictedRoute restricted>
-              <Register />
+              <AuthNav />
             </RestrictedRoute>
           }
-        />
-
+        >
+          <Route path={route.logIn} element={<Login />} />
+          <Route path={route.register} element={<Register />} />
+        </Route>
+        {/* //! Авторизированый пользователь */}
         <Route
-          path={route.logIn}
-          element={
-            <RestrictedRoute restricted>
-              <Login />
-            </RestrictedRoute>
-          }
-        />
-
-        <Route
-          index
+          path="/"
           element={
             <PrivateRoute>
-              <UserInfo />
+              <UserNav />
             </PrivateRoute>
           }
-        />
-
-        <Route
-          path={route.contacts}
-          element={
-            <PrivateRoute>
-              <PhoneBook />
-            </PrivateRoute>
-          }
-        />
-      </Route> */}
-    </Routes>
+        >
+          <Route index element={<UserInfo />} end />
+          <Route path={route.contacts} element={<PhoneBook />} />
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </>
   );
 };

@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import NavActive from '../../images/bg-active-links.svg';
-import AuthNavBar from '../../components/AuthNavBar/AuthNavBar';
+import AuthNavBar from '../../components/Navigation/AuthNavBar/AuthNavBar';
 
 const Link = styled(NavLink)`
   text-decoration: none;
