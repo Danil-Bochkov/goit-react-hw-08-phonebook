@@ -1,7 +1,9 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import NavActive from '../../images/bg-active-links.svg';
 import AuthNavBar from '../../components/Navigation/AuthNavBar/AuthNavBar';
+import Loader from 'components/Loader/Loader';
 
 const Link = styled(NavLink)`
   text-decoration: none;
@@ -30,7 +32,9 @@ export default function AuthNav() {
         <Link to="/login">Authorization</Link>
         <Link to="/register">Regitration</Link>
       </AuthNavBar>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

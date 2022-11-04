@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import route from 'utils/route';
@@ -6,6 +7,7 @@ import { logOut } from '../../redux/auth/auth-operations';
 import style from './UserNav.module.css';
 import NavActive from '../../images/bg-active-links-auth.svg';
 import LogoIcon from '../../images/logo.svg';
+import Loader from 'components/Loader/Loader';
 
 import { ImExit } from 'react-icons/im';
 
@@ -53,7 +55,9 @@ export default function UserNav() {
       </aside>
       <div className="appField">
         <div className={style.userField}>
-          <Outlet />
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </div>
       </div>
     </div>
