@@ -1,0 +1,31 @@
+.filterField {
+    margin-bottom: 15px;
+}
+
+.filterField__label {
+    font-size: 12px;
+    line-height: 1.16;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    color: #7f8e9d;
+}
+
+.filterField__input {
+    font-size: 14px;
+    line-height: 1.28;
+
+    letter-spacing: 0.16px;
+
+    background-color: #f4f4f4;
+    outline: none;
+    border: 1px solid #c5c5c5;
+    border-radius: 6px;
+    padding: 8px 16px;
+}
+
+.filterField__input:focus {
+    border-color: #4cc6f5;
+    background-color: white;
+}

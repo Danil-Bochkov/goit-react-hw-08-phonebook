@@ -1,0 +1,9 @@
+.contactsField {
+    width: 100%;
+}
+
+.contactsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

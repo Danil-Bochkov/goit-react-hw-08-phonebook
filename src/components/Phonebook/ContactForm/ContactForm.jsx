@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import style from './ContactForm.module.css';
 
 export default function ContactForm({ addContact }) {
   const handleSubmit = evt => {
@@ -12,11 +13,11 @@ export default function ContactForm({ addContact }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="formField">
-      <label className="formField__label">
+    <form onSubmit={handleSubmit} className={style.formField}>
+      <label className={style.formField__label}>
         Name
         <input
-          className="formField__input"
+          className={style.formField__input}
           type="text"
           name="name"
           placeholder="Enter name"
@@ -25,10 +26,10 @@ export default function ContactForm({ addContact }) {
           required
         />
       </label>
-      <label className="formField__label">
+      <label className={style.formField__label}>
         Number
         <input
-          className="formField__input"
+          className={style.formField__input}
           type="tel"
           name="number"
           placeholder="111-11-11"
@@ -37,7 +38,7 @@ export default function ContactForm({ addContact }) {
           required
         />
       </label>
-      <button type="submit" className="formField__btn">
+      <button type="submit" className={style.formField__btn}>
         Add Contact
       </button>
     </form>

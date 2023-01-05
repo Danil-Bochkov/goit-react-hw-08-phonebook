@@ -16,7 +16,7 @@ import UserMenu from '../../components/Navigation/UserMenu/UserMenu';
 
 import { toast } from 'react-toastify';
 
-import './style.scss';
+import style from './Phonebook.module.css';
 import capitalize from 'utils/capitalize';
 
 const PhoneBook = () => {
@@ -64,14 +64,14 @@ const PhoneBook = () => {
   return (
     <>
       <UserMenu />
-      <div className="PhoneBook">
-        <div className="container wrapperPhonebook">
-          <h2 className="PhoneBook__title">Phonebook</h2>
+      <div className={style.PhoneBook}>
+        <div className={style.container}>
+          <h2 className={style.PhoneBook__title}>Phonebook</h2>
           <ContactForm addContact={addContactsForm} />
         </div>
 
-        <div className="container wrapperContacts">
-          <h2 className="PhoneBook__title">Contacts</h2>
+        <div className={style.container}>
+          <h2 className={style.PhoneBook__title}>Contacts</h2>
           <Filter handleChange={handleChange} filter={filter} />
           {isLoading && !error && <Loader />}
           <ContactList contacts={filterContacts(contacts)} />

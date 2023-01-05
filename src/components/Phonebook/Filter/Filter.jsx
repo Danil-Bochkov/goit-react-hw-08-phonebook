@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './Filter.module.css';
 
 const Filter = ({ handleChange, filter }) => {
   return (
-    <form className="filterField">
-      <label className="filterField__label">
+    <form className={style.filterField}>
+      <label className={style.filterField__label}>
         Find contacts by name
         <input
-          className="filterField__input"
+          className={style.filterField__input}
           type="text"
           name="filter"
           placeholder="Enter name"

@@ -55,8 +55,8 @@ margin: 33px 0px 40px 40px;
 }
 
 .userField {
-    padding: 16px 0;
-    padding-right: 48px;
-    padding-left: 284px;
-    width: 100%;
+    padding: 16px 20px;
+    margin-left: auto;
+    width: calc(620px + (1640 - 620) * ((100vw - 900px) / (1920 - 900)));
+
 }
