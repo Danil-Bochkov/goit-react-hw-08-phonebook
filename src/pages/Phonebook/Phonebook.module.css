@@ -6,7 +6,7 @@
     margin-top: 32px;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1024px) {
     .PhoneBook {
         flex-direction: row;
     }
@@ -31,8 +31,4 @@
 
 .PhoneBook .container:first-child {
     height: fit-content;
-}
-
-.PhoneBook .container:last-child {
-    width: 90%;
 }
