@@ -15,7 +15,6 @@ import Loader from '../../components/Loader/Loader';
 import UserMenu from '../../components/Navigation/UserMenu/UserMenu';
 
 import { toast } from 'react-toastify';
-
 import style from './Phonebook.module.css';
 import capitalize from 'utils/capitalize';
 

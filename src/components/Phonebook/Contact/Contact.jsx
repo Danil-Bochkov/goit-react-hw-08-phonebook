@@ -3,15 +3,14 @@ import { deleteContact } from '../../../redux/contacts/operations';
 
 import style from './Contact.module.css';
 
-export const Contact = ({ id, name, number }) => {
+export const Contact = ({ _id, name, phone }) => {
   const dispatch = useDispatch();
-
-  const handleDelete = () => dispatch(deleteContact(id));
+  const handleDelete = () => dispatch(deleteContact(_id));
 
   return (
     <div className={style.contactsList__item}>
       <span className={style.contactsList__info}>
-        <b>{name}:</b> {number}
+        <b>{name}:</b> {phone}
       </span>
       <button className={style.contactsList__btn} onClick={handleDelete}>
         Delete

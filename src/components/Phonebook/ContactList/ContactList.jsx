@@ -12,9 +12,9 @@ const ContactList = ({ contacts }) => {
         <Notification message="You don't have any contact 😓" />
       ) : (
         <ul className={style.contactsList}>
-          {contacts.map(({ id, name, number }) => (
-            <li key={id}>
-              <Contact id={id} name={name} number={number} />
+          {contacts.map(({ _id, name, phone }, i) => (
+            <li key={i}>
+              <Contact _id={_id} name={name} phone={phone} />
             </li>
           ))}
         </ul>
@@ -26,9 +26,9 @@ const ContactList = ({ contacts }) => {
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      _id: PropTypes.string,
       name: PropTypes.string,
-      number: PropTypes.string,
+      phone: PropTypes.string,
     })
   ),
 };

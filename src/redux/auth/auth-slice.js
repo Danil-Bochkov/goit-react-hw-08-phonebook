@@ -1,66 +1,83 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut, fetchCurrentUser } from "./auth-operations";
-
-const initialState = {
-    user: { name: null, email: null },
-    token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
-    isSigningUp: false,
-    isLoggingIn: false,
-    isLoggingOut: false,
-};
+import { register, logIn, logOut, verifyUser, fetchCurrentUser } from "./auth-operations";
 
 const authSlice = createSlice({
     name: 'auth',
-    initialState,
+    initialState: {
+        user: { name: '', email: '', subscription: '', avatarUrl: '' },
+        token: null,
+        isLoading: false,
+        isLoggedIn: false,
+        error: null,
+        isFetching: false,
+    },
     extraReducers: {
         [register.pending]: state => {
-            state.isSigningUp = true;
+        state.isLoading = true;
+        state.error = false;
         },
-        [register.fulfilled](state, action) {
-            state.isSigningUp = false;
-            state.user = action.payload.user;
-            state.token = action.payload.token;
-            state.isLoggedIn = true;
+        [register.fulfilled]: (state, action) => {
+        state.user = action.payload;
+        state.isLoading = false;
         },
-        [register.rejected]: state => {
-            state.isSigningUp = false;
+        [register.rejected]: (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+        },
+        [verifyUser.pending]: state => {
+        state.isLoading = true;
+        state.error = false;
+        },
+        [verifyUser.fulfilled]: state => {
+        state.isLoading = false;
+        },
+        [verifyUser.rejected]: (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
         },
         [logIn.pending]: state => {
-            state.isLoggingIn = true;
+        state.isLoading = true;
+        state.error = false;
         },
-        [logIn.fulfilled](state, action) {
-             state.isLoggingIn = false;
-            state.user = action.payload.user;
-            state.token = action.payload.token;
-            state.isLoggedIn = true;
+        [logIn.fulfilled]: (state, action) => {
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+        state.isLoggedIn = true;
+        state.isLoading = false;
         },
-        [logIn.rejected]: state => {
-            state.isLoggingIn = false;
+        [logIn.rejected]: (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
         },
         [logOut.pending]: state => {
-            state.isLoggingOut = true;
+        state.isLoading = true;
+        state.error = false;
         },
-        [logOut.fulfilled](state) {
-            state.isLoggingOut = false;
-            state.user = { name: null, email: null };
-            state.token = null;
-            state.isLoggedIn = false;
+        [logOut.fulfilled]: (state) => {
+        state.token = null;
+        state.user = { name: '', email: '', subscription: '', avatarUrl: '' };
+        state.isLoggedIn = false;
+        state.isLoading = false;
         },
-        [logOut.rejected]: state => {
-            state.isLoggingOut = false;
+        [logOut.rejected]: (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
         },
         [fetchCurrentUser.pending]: state => {
-            state.isRefreshing = true;
+        state.isLoading = true;
+        state.isFetching = true;
+        state.error = false;
         },
-        [fetchCurrentUser.fulfilled](state, action) {
-            state.isRefreshing = false;
-            state.user = action.payload;
-            state.isLoggedIn = true;
+        [fetchCurrentUser.fulfilled]: (state, action) => {
+        state.user = action.payload.user;
+        state.isLoggedIn = true;
+        state.isLoading = false;
+        state.isFetching = false;
         },
-        [fetchCurrentUser.rejected]: state => {
-            state.isRefreshing = false;
+        [fetchCurrentUser.rejected]: (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+        state.isFetching = false;
         },
     }
 });
