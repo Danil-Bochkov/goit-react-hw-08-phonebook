@@ -1,14 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { axiosInstance } from "../../utils/axios.config"
 
 export const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    axiosInstance.defaults.headers.common['Authorization'] = '';
   },
 }
 
@@ -29,7 +28,7 @@ export const logIn = createAsyncThunk(
   "auth/login",
   async (user, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post("/api/auth/login", user);
+      const { data } = await axiosInstance.post("/auth/login", user);
       token.set(data.token);
       localStorage.setItem("token", data.token);
       return data;
@@ -43,7 +42,7 @@ export const verifyUser = createAsyncThunk(
   'auth/verifyUser',
   async (email, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post('/api/auth/verify', email);
+      const { data } = await axiosInstance.post('/auth/verify', email);
       toast.success(data.message);
       return data;
     } catch (error) {
@@ -72,7 +71,7 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token.token;
+    const persistedToken = state.auth.token;
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
